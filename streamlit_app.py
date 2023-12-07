@@ -3,30 +3,18 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Create a Streamlit app
-st.title('Dynamic Graph based on User Input')
+st.sidebar.title('Interactive Controls')
+user_input = st.sidebar.slider('Select a number:', 1, 10, 5)
 
-# Create interactive elements
-number = st.slider('Select a number', 1, 10)
-option = st.selectbox('Select an option', ['A', 'B', 'C'])
 
-# Generate data based on user input
-data = pd.DataFrame({
-    'x': np.arange(1, number + 1),
-    'y': np.random.randint(1, 100, size=number)
-})
+data = np.random.randn(100, user_input)
 
-# Display the data
-st.write(f"Displaying data for option {option}:")
-st.write(data)
+st.write('### Random Data Generated:')
+st.write(pd.DataFrame(data))
 
-# Create a dynamic graph
+st.write('### Line Chart:')
 plt.figure(figsize=(8, 6))
-plt.bar(data['x'], data['y'])
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.title('Dynamic Bar Chart')
+plt.plot(np.mean(data, axis=0))
 st.pyplot()
 
-# Save the Streamlit app
-st.set_option('deprecation.showPyplotGlobalUse', False)
+st.write('This app generates random data based on user input and displays it in a DataFrame. It also plots a line chart of the mean of the generated data.')
