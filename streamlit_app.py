@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 st.title('Lab 10- Streamlit')
 Apple = pd.read_csv('AppleData.csv')
 
+data = pd.DataFrame({
+    'x': np.arange(1, number + 1),
+    'y': np.random.randint(1, 100, size = number)
+})
+
 prices = st.sidebar.slider('Select Price: ', min_value = 0.0, max_value = 20.0, value = (0.0, 20.0))
 genres = Apple['prime_genre'].unique()
 genre = st.sidebar.multiselect('Select Genre: ', genres, default = genres)
