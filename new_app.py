@@ -15,11 +15,13 @@ data = pd.DataFrame({
 
 st.write(f'Displaying data for option {option}:')
 st.write(data)
-In [6]:
+
 plt.figure(figsize = (8,6))
 plt.bar(data['x'], data['y'])
 plt.xlabel('X-axis')
 plt.ylabel('Y-axis')
 plt.title('Dynamic Bar Chart')
 st.pyplot()
+
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
